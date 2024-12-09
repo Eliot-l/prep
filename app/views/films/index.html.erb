@@ -1,0 +1,13 @@
+<h1>index film</h1>
+
+<ul>
+ <% @films.each do |film| %>
+    <li>
+      <%= link_to film_path(film) do %>
+        <h2><%= film.title %></h2>
+        <%= image_tag(film.photo_url, alt: film.title) %>
+        <p><%= film.description %></p>
+      <% end %>
+    </li>
+  <% end %>
+</ul>

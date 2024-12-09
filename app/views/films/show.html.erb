@@ -1,0 +1,12 @@
+<h1>Show film</h1>
+
+<h2><%= @film.title %></h2>
+<%= image_tag(@film.photo_url, alt: @film.title) %>
+<p><%= @film.description %></p>
+
+<%= simple_form_for Wishlist.new do |f| %>
+  <%= f.hidden_field :film_id, value: @film.id %>
+  <%= f.submit 'Add to Wishlist', class: 'btn btn-primary' %>
+<% end %>
+
+<%= link_to 'Back to Films Index', films_path %>
