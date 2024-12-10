@@ -11,7 +11,8 @@ Rails.application.routes.draw do
   # root "posts#index"
 
   resources :films, only: [:show, :index]
-  resources :users 
-  resources :wishlists, only: [:create, :show]
+  resources :users do
+    resources :wishlists, only: [:create, :show, :destroy, :index]
+  end
 
 end

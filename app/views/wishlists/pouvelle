@@ -1,0 +1,14 @@
+<ul>
+ <% @films.each do |film| %>
+    <li>
+      <%= link_to film_path(film) do %>
+        <h2><%= film.title %></h2>
+        <%= image_tag(film.photo_url, alt: film.title) %>
+        <p><%= film.description %></p>
+        <% end %>
+        <%= button_to 'Supprimer', user_wishlist_path(@user, @wishlist, film_id: film.id),
+            method: :delete, data: { turbo_confirm: 'Êtes-vous sûr de vouloir supprimer ce film de votre wishlist ?' },
+            class: 'main-btn-small-profile' %>
+    </li>
+  <% end %>
+</ul>

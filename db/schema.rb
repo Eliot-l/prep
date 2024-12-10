@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_12_09_144659) do
+ActiveRecord::Schema[7.1].define(version: 2024_12_10_135816) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -20,6 +20,13 @@ ActiveRecord::Schema[7.1].define(version: 2024_12_09_144659) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "photo_url"
+  end
+
+  create_table "films_wishlists", id: false, force: :cascade do |t|
+    t.bigint "wishlist_id", null: false
+    t.bigint "film_id", null: false
+    t.index ["film_id"], name: "index_films_wishlists_on_film_id"
+    t.index ["wishlist_id"], name: "index_films_wishlists_on_wishlist_id"
   end
 
   create_table "users", force: :cascade do |t|

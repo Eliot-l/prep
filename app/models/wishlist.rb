@@ -1,4 +1,6 @@
 class Wishlist < ApplicationRecord
   belongs_to :user
-  belongs_to :film
+  has_and_belongs_to_many :films
+
+  validates :film, uniqueness: { scope: :user }
 end
